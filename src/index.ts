@@ -18,6 +18,8 @@ interface WorkerResponse {
 }
 
 app.post("/execute", async (c) => {
+  // TODO it would be good to parse the body to handle things like
+  // cron jobs, scripts, or http handlers differently.
   const code = await c.req.text();
 
   let worker = await newDenoHTTPWorker(code, {
